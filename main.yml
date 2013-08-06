@@ -5,8 +5,7 @@
   vars_files:
     - vars/main.yml
   user: root
-  roles:
-    - ppa-dep 
+  #roles:
     #- {role: ssl-certs, when: https == 'true'}
   tasks:
   - include: tasks/configure-repository.yml
