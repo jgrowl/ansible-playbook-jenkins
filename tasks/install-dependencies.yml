@@ -1,8 +1,9 @@
 ---
 # Install Jenkins dependencies
-- name: Install dependencies
-  apt: pkg=${item} state=installed update-cache=yes
-    - 'openjdk-6-jre'
-    - 'openjdk-6-jdk'
-  tags:
-    - jenkins 
+- name: Install Jenkins dependencies 
+  apt: pkg=$item state=installed update-cache=yes
+  with_items:
+    - openjdk-7-jdk
+    - openjdk-7-jre
+  tags: 
+    - jenkins
