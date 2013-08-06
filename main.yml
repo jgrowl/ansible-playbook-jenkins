@@ -1,0 +1,20 @@
+---
+# This Playbook deploys jenkins ci!
+
+- hosts: jenkins
+  vars_files:
+    - vars/main.yml
+  user: root
+  roles:
+    - ppa-dep 
+    #- {role: ssl-certs, when: https == 'true'}
+  tasks:
+  - include: tasks/configure-repository.yml
+  - include: tasks/install-dependencies.yml
+  - include: tasks/install-jenkins.yml
+
+  - include: tasks/install-nginx.yml
+    when: jenkins.webserver == 'nginx'
+
+#  handlers:
+#   - include: handlers/main.yml
