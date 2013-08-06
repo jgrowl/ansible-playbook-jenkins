@@ -8,7 +8,7 @@
     - jenkins
 
 - name: Configure apt repository manually to get around missing source repository problem
-  copy: src=files/root/etc/apt/sources.list.d/jenkins.list owner=root group=root mode=0755
+  copy: src=files/root/etc/apt/sources.list.d/jenkins.list dest=/etc/apt/sources.list.d/jenkins.list owner=root group=root mode=0755
 
 ## Add Jenkins repository
 #- name: Add Jenkins repository
