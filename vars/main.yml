@@ -1,2 +1,3 @@
 jenkinsRepository: 'deb http://pkg.jenkins-ci.org/debian binary/'
 jenkinsKey: 'http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key'
+jenkinsWebserver: false
