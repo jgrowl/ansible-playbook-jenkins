@@ -4,6 +4,7 @@
 - hosts: jenkins
   vars_files:
     - vars/main.yml
+    - vars/private.yml
   user: root
   #roles:
     #- {role: ssl-certs, when: https == 'true'}
@@ -13,7 +14,7 @@
   - include: tasks/install-jenkins.yml
 
   - include: tasks/install-nginx.yml
-    when: jenkins.webserver == 'nginx'
+    when: jenkinsWebserver == 'nginx'
 
 #  handlers:
 #   - include: handlers/main.yml
