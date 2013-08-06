@@ -6,15 +6,12 @@
     - vars/main.yml
     - vars/private.yml
   user: root
-  #roles:
-    #- {role: ssl-certs, when: https == 'true'}
+  roles:
+    - {role: nginx, when: jenkins_webserver == 'nginx'}
   tasks:
   - include: tasks/configure-repository.yml
   - include: tasks/install-dependencies.yml
   - include: tasks/install-jenkins.yml
-
-  - include: tasks/install-nginx.yml
-    when: jenkinsWebserver == 'nginx'
 
 #  handlers:
 #   - include: handlers/main.yml
