@@ -2,20 +2,22 @@
 
 # Configure Jenkins repository
 
-# Add Jenkins repository key
 - name: Add jenkins apt-key
   apt_key: url=${jenkinsKey} state=present
   tags:
     - jenkins
 
-# Add Jenkins repository
-- name: Add Jenkins repository
-  apt_repository: repo='${jenkinsRepository}' state=present
-  tags:
-    - jenkins
+- name: Configure apt repository manually to get around missing source repository problem
+  copy: src=files/root/etc/apt/sources.list.d/jenkins.list owner=root group=root mode=0755
 
+## Add Jenkins repository
+#- name: Add Jenkins repository
+#  apt_repository: repo='${jenkinsRepository}' state=present
+#  tags:
+#    - jenkins
+#
 # Ugly workaround fixing the auto-add src repo when using apt_repository
-- name: Remove invalid Jenkins src repository
-  command: sed --in-place '/deb-src.*pkg.jenkins-ci/d' /etc/apt/sources.list
-  tags:
-    - jenkins
+#- name: Remove invalid Jenkins src repository
+#  command: sed --in-place '/deb-src.*pkg.jenkins-ci/d' /etc/apt/sources.list
+#  tags:
+#    - jenkins
