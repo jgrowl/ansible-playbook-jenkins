@@ -7,8 +7,8 @@
     - vars/private.yml
   user: root
   roles:
-    - {role: nginx, when: jenkins_webserver == 'nginx'}
     - {role: nginx/roles/ssl-certs, when: nginx_ssl}
+    - {role: nginx, when: jenkins_webserver == 'nginx'}
   tasks:
   - include: tasks/configure-repository.yml
   - include: tasks/install-dependencies.yml
