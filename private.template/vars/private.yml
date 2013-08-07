@@ -1,0 +1,2 @@
+#jenkins_webserver: nginx
+#nginx_site: jenkins.spectr.us
