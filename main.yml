@@ -8,6 +8,7 @@
   user: root
   roles:
     - {role: nginx, when: jenkins_webserver == 'nginx'}
+    - {role: nginx/roles/ssl-certs, when: nginx_ssl}
   tasks:
   - include: tasks/configure-repository.yml
   - include: tasks/install-dependencies.yml
